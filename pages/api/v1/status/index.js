@@ -1,4 +1,8 @@
-function Status(request, response) {
-  response.status(200).json({Chave: "Mensagem do 200"})
+import database from "../../../../infra/database.js";
+
+async function status(request, response) {
+  const result = await database.query('SELECT 1 + 1 as sun;')
+  console.log(result.rows);
+  response.status(200).json({ Chave: "Mensagem do 200" });
 }
-export default Status;
+export default status;
